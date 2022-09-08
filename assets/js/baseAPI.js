@@ -6,4 +6,11 @@
 $.ajaxPrefilter(function (option) {
     //在发起ajax请求之前 统一拼接请求的根路径
     option.url = 'http://ajax.frontend.itheima.net' + option.url
+
+    //同意为有权限的接口 添加请求头
+    if (option.url.indexof('/my/') != -1) {
+        option.headers = {
+            Authorization: localStorage.getItem('token') || '',
+        }
+    }
 })

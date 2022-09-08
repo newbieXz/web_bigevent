@@ -45,7 +45,7 @@ $(function () {
         })
     })
 
-    //监听登录表单的提交时间
+    //监听登录表单的提交事件
     $('#form_login').on('submit', function (e) {
         e.preventDefault()
         $.ajax({
@@ -54,7 +54,7 @@ $(function () {
             data: $(this).serialize(),
             success: function (res) {
                 if (res.status !== 0) {
-                    layer.msg('登陆失败')
+                    return layer.msg('登陆失败')
                 }
                 layer.msg('登录成功')
                 //将登录成功的token字符串保存到localstorage中
